@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   {# Include FontAwesome; required for icon display #}
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+
+    {# Include Bootstrap 4 and jQuery #}
+    <link rel="stylesheet" href=" {% static 'css/bootstrap.min.css' %} " >
+    {# Django Tempus Dominus assets are included in `{{ form.media }}` #}
+    {% comment %} {{ form.media }} {% endcomment %}
+    <title>RETHI</title>
+</head>
+<body>
+    <section class='container mt-2'>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'index' %}">RETHI</a>
+    </nav>
+    {% block content %}{% endblock  %}
+    </section>
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+     <script src=" {% static 'js/bootstrap.bundle.min.js' %}" ></script>
+</body>
+</html>

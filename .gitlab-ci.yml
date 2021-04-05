@@ -1,0 +1,17 @@
+variables:
+  GIT_DEPTH: "1"
+
+stages:
+  - deploy
+
+deploy_heroku_dev:
+  stage: deploy
+  image: node:latest
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+  script:
+    - dpl --provider=heroku --skip-cleanup --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+  only:
+    - master
