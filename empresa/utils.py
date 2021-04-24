@@ -1,0 +1,1 @@
+TIPO_RELATORIO = ((None, ''),('B', 'BASICO'), ('P', 'PREMIUM'),)

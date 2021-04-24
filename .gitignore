@@ -3,3 +3,4 @@ venv/
 .vscode/
 # next.js build output
 staticfiles/
+static/

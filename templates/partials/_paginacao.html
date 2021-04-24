@@ -1,0 +1,12 @@
+{% if listar.has_other_pages %}
+    <div class="mdl-paging"><span class="mdl-paging__per-page">
+        {% if listar.has_previous %}
+            <a href="?page={{listar.previous_page_number}}" id="HkhZcTBbWFADje7t" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__per-page-dropdown"><i class="material-icons">keyboard_arrow_left</i>
+            </a>
+        {% endif %}
+        {% if listar.has_next %}
+            <a href="?page={{listar.next_page_number}}" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-paging__next"><i class="material-icons">keyboard_arrow_right</i>
+            </a>
+        {% endif %}
+    </div>
+{% endif %}

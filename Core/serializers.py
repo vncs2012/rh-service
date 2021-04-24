@@ -3,31 +3,6 @@
 from rest_framework import serializers
 from . import models
 
-
-class PerguntaQuestionarioSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.PerguntaQuestionario
-        fields = '__all__'
-
-
-class EneaTipoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.EneaTipo
-        fields = '__all__'
-
-
-class CaracteristicasPersonaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.CaracteristicasPersona
-        fields = '__all__'
-
-
-class ParticipantesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Participantes
-        fields = '__all__'
-
-
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.UserProfile

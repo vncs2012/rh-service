@@ -13,7 +13,7 @@ from pathlib import Path
 import os
 
 import datetime
-import django_heroku
+# import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ALLOWED_HOSTS
 # Application definition
 
 DEFAULT_APPS = [
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,17 +44,20 @@ DEFAULT_APPS = [
 ]
 
 INTERNAL_APPS = [
-    'Core'
+    'Core',
+    'empresa',
+    'widget_tweaks',
+    'localflavor',
 ]
 
 
-INSTALLED_APPS = DEFAULT_APPS + INTERNAL_APPS 
+INSTALLED_APPS = DEFAULT_APPS + INTERNAL_APPS
 
 
 ###############################################################################
 
 MIDDLEWARE = [
- 'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -135,15 +140,59 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'RETHI/static')
 ]
 
-#media
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+# media
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/media/'
 
 
-AUTH_USER_MODEL = 'Core.User'
+# AUTH_USER_MODEL = 'Core.User'
 
 ###############################################################################
 # Heroku
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 ###############################################################################
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+JET_THEMES = [
+    {
+        'theme': 'default', # theme folder name
+        'color': '#47bac1', # color of the theme's button in user menu
+        'title': 'Default' # theme title
+    },
+    {
+        'theme': 'green',
+        'color': '#44b78b',
+        'title': 'Green'
+    },
+    {
+        'theme': 'light-green',
+        'color': '#2faa60',
+        'title': 'Light Green'
+    },
+    {
+        'theme': 'light-violet',
+        'color': '#a464c4',
+        'title': 'Light Violet'
+    },
+    {
+        'theme': 'light-blue',
+        'color': '#5EADDE',
+        'title': 'Light Blue'
+    },
+    {
+        'theme': 'light-gray',
+        'color': '#222',
+        'title': 'Light Gray'
+    }
+]
+
+JET_SIDE_MENU_COMPACT = True
+# JET_CHANGE_FORM_SIBLING_LINKS = True
+JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
+JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
+
+
+LOGIN_URL = "login"
+LOGOUT_REDIRECT_URL = LOGIN_URL
+LOGIN_REDIRECT_URL = "admin/"

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="mdl-cell mdl-cell--6-col-tablet mdl-cell--12-col-desktop">
+{% if perguntas %}
+    {% for pergunta in perguntas %}
+    <div class="mdl-cell mdl-cell--12-col-tablet mdl-cell--4-col-desktop left ">
+        <div class="mdl-card mdl-shadow--2dp margin0">
+            <div class="mdl-card__title mdl-card--border">
+                <h2 class="mdl-card__title-text"><strong>#{{pergunta.nu_pergunta}} {{pergunta.ds_pergunta}}</strong></h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <div>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="pergunta-0{{pergunta.nu_pergunta}}">
+                        <input type="radio" id="pergunta-0{{pergunta.nu_pergunta}}" class="mdl-radio__button" name="pergunta-{{pergunta.nu_pergunta}}" value="{{pergunta.val_per_questionarioA}}">
+                        <span class="mdl-radio__label">{{pergunta.res_per_questionarioA}}</span>
+                    </label>
+                </div>
+                <div>
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="pergunta-1{{pergunta.nu_pergunta}}">
+                        <input type="radio" id="pergunta-1{{pergunta.nu_pergunta}}" class="mdl-radio__button" name="pergunta-{{pergunta.nu_pergunta}}" value="{{pergunta.val_per_questionarioB}}">
+                        <span class="mdl-radio__label">{{pergunta.res_per_questionarioB}}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+       <span>Questionario não cadastrado</span> 
+{% endif %}
+</div>
+{% endblock  %}]

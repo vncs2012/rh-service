@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
-class AppConfig(AppConfig):
+
+class ParticipantesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Core'
-    verbose_name = "Administrativo"
+    name = 'participantes'
