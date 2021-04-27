@@ -1,9 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 # Create your models here.
 from .utils import TIPO_RELATORIO
 
 class Empresa(models.Model):
     """Pode sera tanto Empresa Consultor ou coach"""
+    user_admin = models.OneToOneField(User, verbose_name="Usuario Administrador", on_delete=models.CASCADE)
     nome = models.CharField("Empresa  & Consultor", max_length=128)
     email = models.EmailField("E-mail", max_length=128)
     contato = models.CharField("Telefone de Contato", max_length=12)
@@ -18,6 +20,16 @@ class Empresa(models.Model):
 
     def get_absolute_url(self):
         return reverse("Empresa_detail", kwargs={"pk": self.id})
+
+class EmpresaUsuarios(models.Model):
+    id_empresa = models.ForeignKey(Empresa, verbose_name="Empresa", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, verbose_name="Usuário", on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = "EmpresaUsuarios"
+        verbose_name_plural = "Empresa & Usuarios"
+
+    def __str__(self):
+        return self.user.username
 
 class SolicitacaoReltorio(models.Model):
     empresa = models.ForeignKey(Empresa, verbose_name=("Empresa  & Consultor"), on_delete=models.CASCADE)

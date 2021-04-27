@@ -2,8 +2,11 @@ from . import models
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from .models import PerguntaQuestionario
+from empresa.models import EmpresaUsuarios,Empresa
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm,User
+from django.db import transaction
 
 
 @login_required
@@ -32,6 +35,33 @@ def login(request):
             messages.error(request, 'Usuario ou Senha incorreto')
 
     return render(request, 'usuario/login.html')
+
+def create_user(request):
+    form = UserCreationForm()
+    contexto={
+        'form' : form
+    } 
+    if request.method == 'POST':
+        createUser = UserCreationForm(request.POST)
+        contexto={
+            'form' : createUser
+        } 
+        if not createUser.is_valid():
+            return render(request, 'usuario/create.html', contexto)
+        with transaction.atomic():
+            usersave = createUser.save()
+            empresa = Empresa.objects.filter(user_admin=request.user).first()
+            # usersave = User.objects.filter(username==createUser.username).first()
+            print(empresa)
+            empresa_user = EmpresaUsuarios()
+            empresa_user.id_empresa = empresa
+            empresa_user.user = usersave
+            empresa_user.save()
+
+        # Criar rotina para vincular o novo usuario com a empresa/Consultor(Coach)
+        return redirect('index')
+
+    return render(request,'usuario/create.html',contexto)
 
 
 def logout(request):

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<section class='mdl-cell mdl-cell--6-col-tablet mdl-cell--12-col-desktop'>
+<form action="{% url 'create_user' %}" method='POST' >
+    {% csrf_token %}
+    {% for field in form.visible_fields  %}
+        <div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--6-col-tablet mdl-cell--12-col-desktop'>
+            {{field|add_class:'mdl-textfield__input'}}
+            <label for="{{feild.id_for_labek}}" class="mdl-textfield__label">{{field.label}}</label>
+        </div>
+         {% if field.help_text %}
+
+                {% comment %} <span class="mdl-chip mdl-chip--contact">
+                    <span class="mdl-chip__contact mdl-color--blue mdl-color-text--white">I</span>
+                    <span class="mdl-chip__text">{{field.help_text}}</span>
+                </span> {% endcomment %}
+
+        {% endif %}
+        {% for error in field.errors  %}
+        <div>
+        <span class="mdl-chip mdl-chip--contact">
+            <span class="mdl-chip__contact mdl-color--red mdl-color-text--white">E</span>
+            <span class="mdl-chip__text">{{error}}</span>
+        </span>
+         </div>
+        {% endfor %}
+    {% endfor %}
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button id="view-source" class='mdl-button mdl-js-button mdl-button--fab mdl-button--raised mdl-button--colored mdl-js-ripple-effect' title='Salvar'>
+            <i class="material-icons">save</i>
+        </button>
+    </div>
+</form>
+</section>
+{% endblock  %}

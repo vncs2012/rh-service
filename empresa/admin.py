@@ -1,9 +1,15 @@
 from django.contrib import admin
 
-from .models import Empresa,SolicitacaoReltorio
+from .models import Empresa,SolicitacaoReltorio,EmpresaUsuarios
 from .forms import EmpresaForm,SolicitacaoReltorioForm
+
 # Register your models here.
+class EmpresaUsuariosInline(admin.TabularInline):
+    model = EmpresaUsuarios
+    extra = 1
+    show_change_link = True
 class EmpresaAdmin(admin.ModelAdmin):
+    inlines= (EmpresaUsuariosInline,)
     form = EmpresaForm
     list_display = ('nome', 'email', 'contato','status')
     list_display_links = ('nome',)
