@@ -8,4 +8,6 @@ urlpatterns = [
     path('logout', myapp_views.logout, name='logout'),
     path('questionario', myapp_views.questionario, name='questionario'),
     path('usuario/add', myapp_views.create_user, name='create_user'),
+    path('usuario/list', myapp_views.list_user, name='list_user'),
+    path('usuario/del/<int:id_user>', myapp_views.del_user, name='del_user'),
 ]

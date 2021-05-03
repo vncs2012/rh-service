@@ -2,10 +2,10 @@ from . import models
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from .models import PerguntaQuestionario
-from empresa.models import EmpresaUsuarios,Empresa
+from empresa.models import EmpresaUsuarios, Empresa
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm,User
+from django.contrib.auth.forms import UserCreationForm, User
 from django.db import transaction
 
 
@@ -36,23 +36,24 @@ def login(request):
 
     return render(request, 'usuario/login.html')
 
+
+@login_required
 def create_user(request):
     form = UserCreationForm()
-    contexto={
-        'form' : form
-    } 
+    contexto = {
+        'form': form
+    }
     if request.method == 'POST':
         createUser = UserCreationForm(request.POST)
-        contexto={
-            'form' : createUser
-        } 
+        contexto = {
+            'form': createUser
+        }
         if not createUser.is_valid():
             return render(request, 'usuario/create.html', contexto)
         with transaction.atomic():
             usersave = createUser.save()
             empresa = Empresa.objects.filter(user_admin=request.user).first()
             # usersave = User.objects.filter(username==createUser.username).first()
-            print(empresa)
             empresa_user = EmpresaUsuarios()
             empresa_user.id_empresa = empresa
             empresa_user.user = usersave
@@ -61,9 +62,24 @@ def create_user(request):
         # Criar rotina para vincular o novo usuario com a empresa/Consultor(Coach)
         return redirect('index')
 
-    return render(request,'usuario/create.html',contexto)
+    return render(request, 'usuario/create.html', contexto)
 
 
+@login_required
+def list_user(request):
+    empresa = Empresa.objects.filter(user_admin=request.user).first()
+    users = EmpresaUsuarios.objects.filter(id_empresa=empresa).all()
+    contexto = {
+        'listar': users
+    }
+    return render(request, 'usuario/list.html', contexto)
+
+def del_user(request,id_user):
+    pass
+
+
+
+@login_required
 def logout(request):
     auth.logout(request)
     return redirect('index')

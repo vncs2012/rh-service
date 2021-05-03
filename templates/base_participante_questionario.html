@@ -20,9 +20,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>RETHI Administrtivo</title>
+    <title>EneaMapper-</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -32,24 +32,15 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-    <link rel="apple-touch-icon-precomposed" href=" {% static 'img/ios-desktop.png' %}">
+    <link rel="apple-touch-icon-precomposed" href="{% static 'img/ios-desktop.png' %}">
 
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#3372DF">
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
 
-    <link rel="shortcut icon" href=" {% static 'img/favicon.png' %}">
-
-    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-    <!--
-    <link rel="canonical" href="http://www.example.com/">
-    -->
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href=" {% static 'material/material.min.css' %} ">
-    <link rel="stylesheet" href=" {% static 'material/styles.css' %}">
-    
+    <link rel="stylesheet" href="{% static 'material/stylesQuestionario.css' %}">
     <style>
     #view-source {
       position: fixed;
@@ -63,23 +54,25 @@
     </style>
   </head>
   <body>
-    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-        {% include 'partials/_navbar.html' %}
-      <div class="demo-drawer mdl-layout__drawer mdl-card--border" >
-        {% include 'partials/_account.html' %}
-        {% include 'partials/_menu.html' %}
-      </div>
-      <main class="mdl-layout__content mdl-color--grey-100">
-        <div class="mdl-grid ">
-        {% comment %} demo-content {% endcomment %}
-          <div class="demo-charts mdl-cell mdl-cell--12-col mdl-grid">
-                {% block content %}{% endblock  %}
-          </div>
+    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title ">EneaMapper</span>
         </div>
+      </header>
+      <div class="demo-ribbon"></div>
+      <main class="demo-main mdl-layout__content">
+        <div class="demo-container mdl-grid">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+          <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+            <div class="demo-crumbs mdl-color-text--grey-500">
+               Decida seu futuro junto com <strong>EneaMapper</strong>
+            </div>
+             {% block content  %}{% endblock %}
+          </div>
+            {% include 'partials/_footer.html' %}
       </main>
-         {% include 'partials/_footer.html' %}
     </div>
-
-       <script src=" {% static 'material/material.min.js' %}"></script>
+    <script src="{% static 'material/material.min.js'%} "></script>
   </body>
 </html>

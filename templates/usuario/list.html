@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% comment %} <h2 style="margin-bottom: 0px;">useritação</h2> {% endcomment %}
+<section class="mdl-grid" id="my-table" style="padding-top: 0px;margin-top: 0px;">
+    <div class="mdl-cell mdl-cell--6-col-tablet mdl-cell--12-col-desktop">
+        <table id="mdl-table" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" >
+            <div class="mdl-paging"><span class="mdl-paging__per-page">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable is-upgraded is-focused">
+                        <label class="mdl-button mdl-js-button mdl-button--icon" for="sample6">
+                                <i class="material-icons">search</i>
+                        </label>
+                        <div class="mdl-textfield__expandable-holder">
+                                <input class="mdl-textfield__input search" type="text" id="sample6">
+                                <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+                        </div>
+                </div>
+            </div>
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Empresa  & Consultor</th>
+                    <th>Usuario</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            {% if listar %}
+                <tbody >
+                    {% for list in listar %}
+                        <tr>
+                            <td>{{ list.user }}</td>
+                            <td>{{ list.id_empresa }}</td>
+                            <td>
+                                <a href="{% url 'del_user' list.id %}" class="mdl-button mdl-js-button mdl-button--icon">
+                                <i class="material-icons">delete_forever</i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            {%else%}
+                <div class="mdl-cell mdl-cell--6-col-tablet mdl-cell--12-col-desktop">
+                    <p>useritações nao encontrada</p>
+                </div>    
+            {% endif %}
+            <tfoot>
+            <tr>
+
+                <td colspan='8'>{% include 'partials/_paginacao.html' %}</td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>
+ <a href="{% url 'create_user' %}" id="view-source" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">
+ <i class="material-icons">add</i>
+ </a>  
+{% endblock  %}

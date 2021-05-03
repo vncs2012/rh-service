@@ -8,6 +8,13 @@ class EmpresaUsuariosInline(admin.TabularInline):
     model = EmpresaUsuarios
     extra = 1
     show_change_link = True
+   
+    def get_queryset(self, request):
+        """Alter the queryset to return no existing entries"""
+        # get the existing query set, then empty it.
+        qs = super(EmpresaUsuariosInline, self).get_queryset(request)
+        return qs.all()
+
 class EmpresaAdmin(admin.ModelAdmin):
     inlines= (EmpresaUsuariosInline,)
     form = EmpresaForm

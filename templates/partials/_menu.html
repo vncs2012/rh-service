@@ -1,11 +1,11 @@
 {% block content %}
         <nav class="demo-navigation mdl-navigation ">
           <a class="mdl-navigation__link" href="{% url 'index' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
-           <a class="mdl-navigation__link" href="{% url 'create_user' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Usuario</a>
+           <a class="mdl-navigation__link" href="{% url 'list_user' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Usuario</a>
          {% comment %} <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a> {% endcomment %}
           <a class="mdl-navigation__link" href=" {% url 'questionario' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Questionario</a>
-          {% comment %} <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
+          <a class="mdl-navigation__link" href=" {% url 'paricipante_list' %} "><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Participante</a>
+          {% comment %}<a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a> { {% endcomment %}
           <a class="mdl-navigation__link" href="{% url 'solicitacaolist' %}"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Solicitação de Relatorio</a>
           {% comment %} <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a> {% endcomment %}

@@ -45,6 +45,7 @@ DEFAULT_APPS = [
 INTERNAL_APPS = [
     'Core',
     'empresa',
+    'participantes',
     'widget_tweaks',
     'localflavor',
 ]

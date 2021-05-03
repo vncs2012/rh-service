@@ -478,3 +478,9 @@ th.sort.desc:after {
   float: left !important;
   position: relative !important;
 }
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

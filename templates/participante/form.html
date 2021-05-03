@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<section class='mdl-cell mdl-cell--6-col-tablet mdl-cell--12-col-desktop'>
+<form action="{% url 'save_participante' %}" method='POST' >
+    {% csrf_token %}
+    {% for feild in form.visible_fields  %}
+        <div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--6-col-tablet mdl-cell--12-col-desktop'>
+            {{feild|add_class:'mdl-textfield__input'}}
+            <label for="{{feild.id_for_labek}}" class="mdl-textfield__label">{{feild.label}}</label>
+        </div>
+        {% for error in feild.errors  %}
+           <section class='alert alert-danger' role='alert'>
+                {{error}}
+           </section>
+        {% endfor %}
+    {% endfor %}
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button id="view-source" class='mdl-button mdl-js-button mdl-button--fab mdl-button--raised mdl-button--colored mdl-js-ripple-effect' title='Salvar'>
+            <i class="material-icons">save</i>
+        </button>
+    </div>
+</form>
+</section>
+{% endblock  %}

@@ -31,6 +31,9 @@ class EmpresaUsuarios(models.Model):
     def __str__(self):
         return self.user.username
 
+    def get_absolute_url(self):
+        return reverse("Empresa_detail", kwargs={"pk": self.id})
+
 class SolicitacaoReltorio(models.Model):
     empresa = models.ForeignKey(Empresa, verbose_name=("Empresa  & Consultor"), on_delete=models.CASCADE)
     quantidade_solicitada = models.IntegerField("Quantidade",)
