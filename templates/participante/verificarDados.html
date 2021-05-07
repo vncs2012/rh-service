@@ -1,6 +1,35 @@
 {% extends "base_participante_questionario.html" %}
 {% load static %}
-{% load widget_tweaks %}
 {% block content %}
-    <h1>Ola Mundo</h1>
+<link rel="stylesheet/less" type="text/css" href="{% static 'css/valida-dados.less' %}">
+<form action='#' method="post" enctype="multipart/form-data">
+{% csrf_token %}
+<fieldset class='text-center'>
+  <legend>Insira seu dados para Responder o Questionario</legend>
+</fieldset>
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col">
+      <div id="profile">
+        <div class="dashes"></div>
+        <label>Clique para navegar ou arrastar uma imagem aqui</label>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--8-col tamnhaoDiv">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col  ">
+        <input class="mdl-textfield__input" type="text" name='participante' />
+        <label class="mdl-textfield__label">Nome</label>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+        <input class="mdl-textfield__input" type="email" name='email' />
+        <label class="mdl-textfield__label">E-mail</label>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="mediaFile" name='foto' />
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent float">Verificar/Salvar</button>
+</form>
+
+  <script src=" {% static 'js/jquery-3.6.0.min.js' %}"></script>
+  <script src=" {% static 'js/valida-dados.js' %}"></script>
 {% endblock %}

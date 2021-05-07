@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href=" {% static 'material/material.min.css' %} ">
-    <link rel="stylesheet" href="{% static 'material/stylesQuestionario.css' %}">
+    <link rel="stylesheet/less" type="text/css" href="{% static 'material/stylesQuestionario.less' %}">
     <style>
     #view-source {
       position: fixed;
@@ -73,6 +73,8 @@
             {% include 'partials/_footer.html' %}
       </main>
     </div>
+    <script src=" {% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src=" {% static 'js/less@3.13.js' %}"></script>
     <script src="{% static 'material/material.min.js'%} "></script>
   </body>
 </html>

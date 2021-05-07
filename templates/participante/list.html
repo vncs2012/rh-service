@@ -36,13 +36,13 @@
                             <td>{{ list.empresa }}</td>
                             {% if list.questionario  %}
                                 <td>Respondido</td>
-                            {% else %}Aguardando
+                            {% else %}
                                  <td>Aguardando</td>
                             {% endif %}
                             <td>
-                                {% comment %} <a href="{% url 'del_participante' list.id %}" class="mdl-button mdl-js-button mdl-button--icon">
-                                <i class="material-icons">delete_forever</i>
-                                </a> {% endcomment %}
+                                <a href="" class="mdl-button mdl-js-button mdl-button--icon" title='Relatorio do Participante'>
+                                <i class="material-icons">description</i>
+                                </a>
                             </td>
                         </tr>
                     {% endfor %}
