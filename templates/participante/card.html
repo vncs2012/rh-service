@@ -1,0 +1,27 @@
+{% load static %}
+<link rel="stylesheet/less" type="text/css" href="{% static 'css/valida-dados.less' %}">
+
+<div class="mdl-grid mdl-shadow--2dp">
+    <div class="mdl-cell mdl-cell--4-col">
+            {% if participante.foto == '' %}
+                <div id="profile">
+                    <div class="dashes"></div>
+                    <label>Clique para navegar ou arrastar uma imagem aqui</label>
+                </div>
+            {% else %}
+                <img id="profile" src="{{ participante.foto.url }}" alt="">
+            {% endif %}   
+       
+    </div>
+    <div class="mdl-cell mdl-cell--8-col tamnhaoDiv mdl-card--border">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col  ">
+            <input class="mdl-textfield__input" type="text" value="{{participante.participante}}" disabled />
+            <label class="mdl-textfield__label">Nome</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell--12-col">
+        <input class="mdl-textfield__input" type="email" value="{{participante.email}}" disabled  />
+        <label class="mdl-textfield__label">E-mail</label>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="{{participante}}" name='participante' >

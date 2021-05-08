@@ -4,9 +4,8 @@
 <link rel="stylesheet/less" type="text/css" href="{% static 'css/valida-dados.less' %}">
 <form action='#' method="post" enctype="multipart/form-data">
 {% csrf_token %}
-<fieldset class='text-center'>
-  <legend>Insira seu dados para Responder o Questionario</legend>
-</fieldset>
+<fieldset >
+  <legend class='text-center'>Insira seu dados para Responder o Questionario</legend>
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--4-col">
       <div id="profile">
@@ -28,6 +27,7 @@
 
   <input type="file" id="mediaFile" name='foto' />
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent float">Verificar/Salvar</button>
+  </fieldset>
 </form>
 
   <script src=" {% static 'js/jquery-3.6.0.min.js' %}"></script>
