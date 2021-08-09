@@ -34,7 +34,7 @@ def paricipante_edit(request):
     return render(request, 'participante/verificarDados.html')
 
 
-@ login_required
+@login_required
 def paricipante_list(request):
     empresa = get_empresa(request.user)
     participantes = Participantes.objects.filter(empresa=empresa).all()
@@ -45,7 +45,7 @@ def paricipante_list(request):
     return render(request, 'participante/list.html', contexto)
 
 
-@ login_required
+@login_required
 def create_participante(request):
     form = ParticipantesForm
     context = {
@@ -54,7 +54,7 @@ def create_participante(request):
     return render(request, 'participante/form.html', context)
 
 
-@ login_required
+@login_required
 def save(request):
     if request.method == 'POST':
         form = ParticipantesForm(request.POST)

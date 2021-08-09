@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 from pathlib import Path
 import os
-
+import sys
 import datetime
 # import django_heroku
 
@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['eneagrama-app.herokuapp.com',
 # Application definition
 
 DEFAULT_APPS = [
-    'jet.dashboard',
     'jet',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,12 +45,17 @@ INTERNAL_APPS = [
     'Core',
     'empresa',
     'participantes',
+    'recrutamentoSelecao',
+    'trabalheConosco'
+]
+
+WIDGET_APPS = [
     'widget_tweaks',
     'localflavor',
 ]
 
 
-INSTALLED_APPS = DEFAULT_APPS + INTERNAL_APPS
+INSTALLED_APPS = DEFAULT_APPS + INTERNAL_APPS + WIDGET_APPS
 
 
 ###############################################################################
@@ -153,11 +157,12 @@ MEDIA_URL = '/media/'
 ###############################################################################
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+JET_DEFAULT_THEME = 'default'
 JET_THEMES = [
     {
-        'theme': 'default',  # theme folder name
-        'color': '#47bac1',  # color of the theme's button in user menu
-        'title': 'Default'  # theme title
+        'theme': 'default',
+        'color': '#47bac1',
+        'title': 'Default'
     },
     {
         'theme': 'green',
@@ -186,12 +191,15 @@ JET_THEMES = [
     }
 ]
 
-JET_SIDE_MENU_COMPACT = True
-# JET_CHANGE_FORM_SIBLING_LINKS = True
-JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
-JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
+JET_SIDE_MENU_COMPACT = False
+JET_CHANGE_FORM_SIBLING_LINKS = True
+# JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
+# JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
 
 
 LOGIN_URL = "login"
 LOGOUT_REDIRECT_URL = LOGIN_URL
 LOGIN_REDIRECT_URL = "admin/"
+
+PROJECT_ROOT = os.path.dirname(__file__)
+sys.path.insert(0,os.path.join(PROJECT_ROOT,'../apps'))
