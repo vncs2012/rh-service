@@ -9,5 +9,6 @@ urlpatterns = [
     path('', include('Core.urls')),
     path('participante/', include('participantes.urls')),
     path('empresa/', include('empresa.urls')),
+    path('trabalhe-conosco/', include('trabalheConosco.urls')),
     # path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')), 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

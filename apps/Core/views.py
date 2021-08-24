@@ -11,7 +11,7 @@ from django.db import transaction
 
 @login_required
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'trabalheConosco/home.html')
 
 
 def login(request):
