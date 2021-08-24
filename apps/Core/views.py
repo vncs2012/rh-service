@@ -9,7 +9,6 @@ from django.contrib.auth.forms import UserCreationForm, User
 from django.db import transaction
 
 
-@login_required
 def index(request):
     return render(request, 'trabalheConosco/home.html')
 
