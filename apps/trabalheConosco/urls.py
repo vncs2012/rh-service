@@ -2,5 +2,6 @@ from django.urls import path, include
 from . import views as myapp_views
 
 urlpatterns = [
-    path('', myapp_views.home,name='home')
+    path('', myapp_views.home,name='home'),
+    path('cadastro', myapp_views.cadastro.as_view(),name='cadastro')
 ]
