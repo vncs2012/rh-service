@@ -4,8 +4,9 @@ from trabalheConosco.utils import TP_ESCOLARIDADE, SEXO, TP_ESTADO_CIVIL
 
 
 class DadosPessoas(models.Model):
+    data_nascimento = models.DateField("Data Nascimento", auto_now=False, auto_now_add=False, null=True)
     rg = models.CharField("RG:", max_length=164)
-    sexo = models.CharField('SEXO:', choices=SEXO, max_length=1)
+    sexo = models.CharField('Sexo:', choices=SEXO, max_length=1)
     estado_civil = models.IntegerField('Estado Civil:', choices=TP_ESTADO_CIVIL)
     escolaridade = models.IntegerField('Escolaridade:', choices=TP_ESCOLARIDADE)
     contato = models.CharField("Numero para contato", max_length=12)

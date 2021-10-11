@@ -1,7 +1,7 @@
 from django.db import models
 
 class Candidato(models.Model):
-    cpf = models.CharField("Digite seu CPF:", max_length=14, unique=True)
+    cpf = models.CharField("CPF:", max_length=14, unique=True)
     email = models.EmailField("Digite seu E-mail:", max_length=150)
     nome = models.CharField("Nome Completo:", max_length=164)
     # senha = models.CharField("Senha: ",max_length=50,)
