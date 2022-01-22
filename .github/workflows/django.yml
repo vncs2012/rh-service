@@ -1,18 +1,14 @@
-name: master Workflow - Test and Deploy
+name: Django CI
 
 on:
-  pull_request:
-    branches: [master]
   push:
     branches: [master]
-
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
 jobs:
-  health-checkup-job: #Check the healthy by running tests
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.9"]
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
