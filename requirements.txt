@@ -1,5 +1,5 @@
 asgiref==3.4.1
-# Django==3.2.8
+Django==4.01.
 django-4-jet==1.0.8
 django-formtools==2.3
 # django-input-mask==2.0.2
