@@ -5,7 +5,7 @@ from recrutamentoSelecao.models.vagas import Vagas
 class vagasCandidato(models.Model):
 
     id_candidato = models.ForeignKey(Candidato, verbose_name="Candidato", on_delete=models.CASCADE)
-    id_vaga = models.ForeignKey(Vagas, verbose_name="Vagas Disponivel", on_delete=models.CASCADE)
+    id_vaga = models.ForeignKey(Vagas, verbose_name="Vagas em aberto", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "vagasCandidato"

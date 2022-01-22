@@ -28,6 +28,22 @@
     border-radius: 0 3px 3px 0 !important;
   }
 
+  hr.style-seven {
+    border-top: 1px dashed #8c8b8b;
+  }
+
+  hr.style-seven:after {
+    content: '\002702';
+    display: inline-block;
+    position: relative;
+    top: -12px;
+    left: 40px;
+    padding: 0 3px;
+    background: #f0f0f0;
+    color: #8c8b8b;
+    font-size: 18px;
+  }
+
   .list {
     width: 100% !important;
   }
@@ -35,6 +51,7 @@
 {% include 'trabalheConosco/partials/_headerCadastro.html' %}
 <main class="container container-cadastro">
   <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
+  <input type="hidden" id="stepC" value="{{wizard.steps.step1}}">
   <form action="" method="post">
     {% csrf_token %}
     <table>
@@ -42,10 +59,16 @@
       {% if wizard.form.forms %}
       {{ wizard.form.management_form }}
       {% for form in wizard.form.forms %}
-      {{ form }}
+      <div class="row form-row">
+        {% include 'trabalheConosco/padrao.html' with form=form %}
+      </div>
+      <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12'>
+        <a class='btn add-new-form' href='#'>+ Add new form</a>
+      </div>
       {% endfor %}
       {% else %}
       <div class="row">
+        <!-- <h1>Teste-> {{form.initial.params}}</h1> -->
         {% include 'trabalheConosco/padrao.html' with form=form %}
       </div>
       {% endif %}
@@ -55,13 +78,84 @@
       <button name="wizard_goto_step" type="submit" class="btn btn-outline-secondary"
         value="{{ wizard.steps.first }}">{% trans "first step" %}</button>
 
-      <button name="wizard_goto_step" type="submit" class="btn btn-outline-info" 
-        value="{{ wizard.steps.prev }}">{% trans "prev step" %}</button>
+      <button name="wizard_goto_step" type="submit" class="btn btn-outline-info" value="{{ wizard.steps.prev }}">
+        {% trans "prev step" %}</button>
       {% endif %}
 
-      <input type="submit" class="btn btn-outline-primary" value="{% trans "save" %}" />
+      <input type="submit" class="btn btn-outline-primary" value="{% trans " save" %}" />
     </div>
   </form>
 </main>
 {% include 'trabalheConosco/partials/_footer.html' %}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+  function updateEmptyFormIDs(element, totalForms) {
+    var thisInput = element
+    var currentName = element.attr('name')
+    var newName = currentName.replace(/[0-9]/, totalForms)
+    console.log(newName)
+
+    thisInput.attr('name', newName)
+    thisInput.attr('id', "id_" + newName)
+
+
+    var newFormRow = element.closest(".form-row");
+
+    var parentDiv = element.parent();
+
+    var inputLabel = parentDiv.find("label")
+    inputLabel.attr("for", "id_" + newName)
+    var input = newFormRow.find("input, select, textarea")
+    input.val("")
+
+
+    return newFormRow
+  }
+
+
+  $('.add-new-form').click(function (e) {
+    e.preventDefault()
+    // form id like #id_vagas-TOTAL_FORMS
+    var steps =[]
+    steps['3'] = 'escolaridade'
+    steps['4'] = 'profissional'
+    steps['5'] = 'vagas'
+ 
+
+    var stepCurrent = $("#stepC").val()
+    console.log(steps[stepCurrent])
+    var type = "id_" + steps[stepCurrent]
+    var formId = type + "-TOTAL_FORMS"
+    console.log(formId)
+
+
+    // copy empty form
+    var emptyRow = $(".form-row").clone();
+    // remove id from new form
+    emptyRow.attr("id", null)
+
+    // get starting form count for formset
+    var totalForms = parseInt($('#' + formId).val());
+    console.log(totalForms)
+
+    // create new form row from empty form row
+    var newFormRow;
+    emptyRow.find("input, select, textarea").each(function () {
+      newFormRow = updateEmptyFormIDs($(this), totalForms)
+    })
+
+
+    var hr = "<hr class='style-seven'/>";
+
+    // insert new form at the end of the last form row
+    $(".form-row:first").after([hr, newFormRow])
+
+    // update total form count (to include new row)
+    $('#' + formId).val(totalForms + 1);
+
+  });
+
+</script>
 {% endblock %}

@@ -12,7 +12,7 @@
 {% endif %}
 
 {% for field in form.visible_fields %}
-<div class='col-xl-4 col-lg-4 col-md-4 col-sm-6'>
+<div class='col-xl-4 col-lg-4 col-md-4 col-sm-6  '>
     <div class="form-group">
         {{ field.label_tag }}
         {% if field.field.widget.input_type == 'select' %}
@@ -32,11 +32,12 @@
                 {% else %}
                     {% render_field field class="form-control" %}
             {% endif %}
-        {% endif %}
-
-        {% if field.help_text %}
+            {% endif %}
+            
+            {% if field.help_text %}
             <small class="form-text text-muted">{{ field.help_text }}</small>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
-</div>
-{% endfor %}
+    {% endfor %}
+    

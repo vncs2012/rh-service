@@ -8,6 +8,7 @@ class DadosEscolaridade(models.Model):
     data_inicio = models.DateField("Data de inicio", auto_now=False, auto_now_add=False)
     data_fim = models.DateField("Previsão termino/data termino", auto_now=False, auto_now_add=False)
     id_candidato = models.ForeignKey(Candidato, verbose_name="Candidato", on_delete=models.CASCADE)
+    id_candidato = models.ForeignKey(Candidato, verbose_name="Candidato", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = "DadosEscolaridade"

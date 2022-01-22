@@ -3,11 +3,10 @@ from .cargos import Cargos
 
 
 class Vagas(models.Model):
-    cargo = models.OneToOneField(
-        Cargos, verbose_name="Cargo", on_delete=models.CASCADE) 
+    cargo = models.OneToOneField(Cargos, verbose_name="Cargo", on_delete=models.CASCADE)
     descricao = models.TextField("Descrição da Vaga: ")
     status = models.BooleanField("Status :", default=True)
-
+    # imageDivugacao = models.ImageField("Imagem Base Para divugação", upload_to='divugacao/%Y/', blank=True, null=True)
     class Meta:
         verbose_name = "Vagas"
         verbose_name_plural = "Cadastro de Vagas"

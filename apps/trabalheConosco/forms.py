@@ -1,5 +1,5 @@
 from django import forms
-from django.forms.models import inlineformset_factory
+from django.forms.models import inlineformset_factory, modelformset_factory
 
 from .models import Candidato,DadosPessoas,DadosEscolaridade,DadosProfissionais,vagasCandidato
 
@@ -22,6 +22,16 @@ class DadosPessoasForm(forms.ModelForm):
         exclude=("id_candidato",)
 
 class DadosEscolaridadeForm(forms.ModelForm):
+    data_inicio = forms.DateField(
+        widget=forms.TextInput(
+            attrs={'type': 'date'}
+        )
+    )
+    data_fim = forms.DateField(
+        widget=forms.TextInput(
+            attrs={'type': 'date'}
+        )
+    )
     
     class Meta:
         model = DadosEscolaridade
@@ -45,6 +55,7 @@ class DadosProfissionaisForm(forms.ModelForm):
         model = DadosProfissionais
         fields="__all__"
         exclude=("id_candidato",)
+
 class DadosVagasForm(forms.ModelForm):
   
     class Meta:
@@ -52,7 +63,12 @@ class DadosVagasForm(forms.ModelForm):
         fields="__all__"
         exclude=("id_candidato",)
 
+vagasFormSet = inlineformset_factory(Candidato,vagasCandidato, form=DadosVagasForm, fields=['id_vaga', ], extra=1,can_delete=True)
 
-
-
-vagasFormSet = inlineformset_factory(Candidato,vagasCandidato, form=DadosVagasForm, fields=['id_vaga', ], extra=3)
+EscolaridadeFormSet = inlineformset_factory(Candidato,DadosEscolaridade, form=DadosEscolaridadeForm,
+fields=['descricao','status','data_inicio','data_fim',],
+ extra=1,can_delete=False)
+ 
+ProfissionaisFormSet = inlineformset_factory(Candidato,DadosProfissionais, form=DadosProfissionaisForm,
+fields=['cargo','Empresa','data_admissao','data_demissao','descricao',],
+ extra=1,can_delete=False)
