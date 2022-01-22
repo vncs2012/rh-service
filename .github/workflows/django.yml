@@ -9,6 +9,11 @@ on:
 jobs:
   health-checkup-job: #Check the healthy by running tests
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        python-version: [4]
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
