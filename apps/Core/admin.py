@@ -1,7 +1,7 @@
 from django.contrib import admin
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from .models import PerguntaQuestionario, CaracteristicasPersona, RelatorioProfile
+
 
 class PerguntaQuestionarioAdmin(admin.ModelAdmin):
     fields = ['nu_pergunta', 'ds_pergunta', 'res_per_questionarioA',

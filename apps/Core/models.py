@@ -1,7 +1,6 @@
 # coding=utf-8
 from __future__ import unicode_literals
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 
 
 
@@ -56,8 +55,8 @@ class RelatorioProfile(models.Model):
     tp_caracteristica = models.IntegerField('Tipo ', choices=TIPO_QUESTIONARIO)
 
     class Meta:
-        verbose_name = _("Relatorio Profile")
-        verbose_name_plural = _("Relatorio Profiles")
+        verbose_name = "Relatorio Profile"
+        verbose_name_plural = "Relatorio Profiles"
 
     def __str__(self):
         return f"Salvo com Sucesso {self.tp_caracteristica}"
