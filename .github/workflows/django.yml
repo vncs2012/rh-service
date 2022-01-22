@@ -11,9 +11,9 @@ jobs:
 
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 4
+      max-parallel: 1
       matrix:
-        python-version: [3.2.9]
+        python-version: [3]
 
     steps:
     - uses: actions/checkout@v2
