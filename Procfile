@@ -1,1 +1,1 @@
-web: gunicorn RETHI.wsgi;
+web: gunicorn RETHI.wsgi --log-file 
