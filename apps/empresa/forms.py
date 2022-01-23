@@ -1,5 +1,5 @@
 from django import forms
-from input_mask.contrib.localflavor.br.widgets import BRPhoneNumberInput
+# from input_mask.contrib.localflavor.br.widgets import BRPhoneNumberInput
 
 from .models import Empresa, SolicitacaoReltorio
 
