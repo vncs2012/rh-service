@@ -51,9 +51,9 @@ jobs:
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{DOCKER_HUB_REPO}}:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{DOCKER_HUB_REPO}}:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{DOCKER_HUB_REPO}}:buildcache,mode=max
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{secrets.DOCKER_HUB_REPO}}:latest
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{secrets.DOCKER_HUB_REPO}}:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/${{secrets.DOCKER_HUB_REPO}}:buildcache,mode=max
 
   # deploy-dev:
   #   runs-on: ubuntu-latest
