@@ -63,7 +63,6 @@ jobs:
         uses: gonuit/heroku-docker-deploy@v1.3.3 # Nome da ação do GitHub (deixe como está).
         with:
           # Abaixo você deve fornecer variáveis ​​para seu aplicativo Heroku.
-
           # O endereço de e-mail associado à sua conta Heroku.
           # Se você não quiser usar segredos de repositório (o que é recomendado), você pode fazer:
           # email: my.email@example.com
@@ -75,16 +74,13 @@ jobs:
 
           # Nome do aplicativo heroku para o qual a compilação deve ser enviada.
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-
           # (Opcional, padrão: "./")
           # Diretório do Dockerfile.
           # Por exemplo, se você tiver um Dockerfile na raiz do seu projeto, deixe-o da seguinte forma:
           dockerfile_directory: ./
-
           # (Opcional, padrão: "Dockerfile")
           # Nome do Dockerfile.
           dockerfile_name: Dockerfile
-
           # (Opcional, padrão: "")
           # Opções adicionais do comando docker build.
           docker_options: "--no-cache"
