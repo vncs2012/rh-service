@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'c7citm%t5to$1deuef2fe#0)op&lba_6frupx_1yep=f-8(%9h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['salus-br.herokuapp.com',
                  'localhost', '127.0.0.1']
 ###############################################################################
