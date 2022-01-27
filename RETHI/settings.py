@@ -26,11 +26,11 @@ SECRET_KEY = 'c7citm%t5to$1deuef2fe#0)op&lba_6frupx_1yep=f-8(%9h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['salus-br.herokuapp.com',
+ALLOWED_HOSTS = ['https://salus-br.herokuapp.com',
                  'localhost', '127.0.0.1']
 ###############################################################################
 # Application definition
-
+CSRF_TRUSTED_ORIGINS = ['https://salus-br.herokuapp.com']
 DEFAULT_APPS = [
     'jet',
     'django.contrib.admin',
