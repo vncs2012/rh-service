@@ -1,13 +1,8 @@
 on:
   # The issues event below is only needed for the default (auto) mode,
   # you can remove it otherwise
-
-    
   issues:
     types: [ assigned ]
-    branchName: tiny
-    autoCloseIssue: true
-   
   # The issue_comment event below is only needed for the ChatOps mode,
   # you can remove it otherwise
   issue_comment:
@@ -24,3 +19,4 @@ jobs:
         uses: robvanderleek/create-issue-branch@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
