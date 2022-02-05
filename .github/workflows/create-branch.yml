@@ -3,6 +3,10 @@ on:
   # you can remove it otherwise
   issues:
     types: [ assigned ]
+    mode: auto
+    silent: false
+    branchName: "i-${issue.number}"
+    autoCloseIssue: true
   # The issue_comment event below is only needed for the ChatOps mode,
   # you can remove it otherwise
   issue_comment:
