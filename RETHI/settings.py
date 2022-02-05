@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['https://salus-br.herokuapp.com',
 ###############################################################################
 # Application definition
 CSRF_TRUSTED_ORIGINS = ['https://salus-br.herokuapp.com']
+
 DEFAULT_APPS = [
     'jet',
     'django.contrib.admin',
