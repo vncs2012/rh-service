@@ -1,6 +1,0 @@
-# https://github.com/robvanderleek/create-issue-branch#option-2-configure-github-action
-mode: auto
-silent: false
-branchName: "i-${issue.number}"
-autoCloseIssue: true
-gitSafeReplacementChar: "-"
