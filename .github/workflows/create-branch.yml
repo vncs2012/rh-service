@@ -1,6 +1,7 @@
 on:
   # The issues event below is only needed for the default (auto) mode,
   # you can remove it otherwise
+
   issues:
     types: [ assigned ]
    
@@ -8,10 +9,7 @@ on:
   # you can remove it otherwise
   issue_comment:
     types: [ created ]
-    mode: auto
-    silent: false
-    branchName: "i-${issue.number}"
-    autoCloseIssue: true
+
   pull_request:
     types: [ closed ]
 
@@ -23,3 +21,7 @@ jobs:
         uses: robvanderleek/create-issue-branch@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          mode: auto
+          silent: false
+          branchName: "i-${issue.number}"
+          autoCloseIssue: true
