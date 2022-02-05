@@ -9,6 +9,10 @@ on:
   # you can remove it otherwise
   issue_comment:
     types: [ created ]
+    mode: chatops
+    branchName: tiny
+    autoCloseIssue: true
+    
 
   pull_request:
     types: [ closed ]
@@ -21,7 +25,3 @@ jobs:
         uses: robvanderleek/create-issue-branch@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          mode: auto
-          silent: false
-          branchName: "i-${issue.number}"
-          autoCloseIssue: true
