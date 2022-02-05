@@ -2,17 +2,17 @@ on:
   # The issues event below is only needed for the default (auto) mode,
   # you can remove it otherwise
 
+    
   issues:
     types: [ assigned ]
+    mode: chatops
+    branchName: tiny
+    autoCloseIssue: true
    
   # The issue_comment event below is only needed for the ChatOps mode,
   # you can remove it otherwise
   issue_comment:
     types: [ created ]
-    mode: chatops
-    branchName: tiny
-    autoCloseIssue: true
-    
 
   pull_request:
     types: [ closed ]
