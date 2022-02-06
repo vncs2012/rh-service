@@ -1,0 +1,4 @@
+mode: chatops
+branchName: tiny
+silent: false
+autoCloseIssue: true 
