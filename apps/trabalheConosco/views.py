@@ -1,3 +1,5 @@
+from django.contrib import messages
+from recrutamentoSelecao.models import Entrevista
 from .models import vagasCandidato, DadosPessoas, Candidato
 from django.forms.models import inlineformset_factory
 from .forms import CandidatoForm, EscolaridadeFormSet, DadosPessoasForm, ProfissionaisFormSet, vagasFormSet
@@ -54,3 +56,18 @@ def saveFormSet(formSet, candidato):
             obj = form.save(commit=False)
             obj.id_candidato = candidato
             obj.save()
+
+
+def saveProximaFaseEntrevista(request, obj):
+    for item in obj:
+        try:
+            e = Entrevista()
+            e.id_candidato = item
+            e.save()
+            messages.success(
+                request, f'Candidato {item.nome} movido para entrevista', fail_silently=True)
+        except e:
+            messages.error(
+                request, f'Erro ao movimentação para entrevista o candidato {item.nome}')
+
+        print(item.id, item.nome, item.cpf)

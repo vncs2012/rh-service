@@ -198,9 +198,9 @@ JET_CHANGE_FORM_SIBLING_LINKS = True
 # JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
 
 
-# LOGIN_URL = "login"
-# LOGOUT_REDIRECT_URL = LOGIN_URL
-# LOGIN_REDIRECT_URL = "admin/"
+LOGIN_URL = "login"
+LOGOUT_REDIRECT_URL = LOGIN_URL
+LOGIN_REDIRECT_URL = "admin/"
 
 PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(PROJECT_ROOT, '../apps'))

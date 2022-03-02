@@ -28,7 +28,7 @@ def login(request):
         if usuario is not None:
             auth.login(request, usuario)
             messages.success(request, 'Login realizado com Sucesso')
-            return redirect('index')
+            return redirect('admin/')
         else:
             print('Usuario ou Senha incorreto')
             messages.error(request, 'Usuario ou Senha incorreto')

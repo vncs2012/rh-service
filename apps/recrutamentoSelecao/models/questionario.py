@@ -2,8 +2,7 @@ from django.db import models
 from .cargos import Cargos
 
 class Questionario(models.Model):
-    cargo = models.ForeignKey(
-        Cargos, verbose_name="Cargo", on_delete=models.CASCADE, null=True, blank=True)
+    cargo = models.ForeignKey(Cargos, verbose_name="Cargo", on_delete=models.CASCADE, null=True, blank=True)
     trabalhe_conosco = models.BooleanField("Padrão do trabalhe Conosco?")
 
     class Meta:

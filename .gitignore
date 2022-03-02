@@ -1,6 +1,5 @@
 __pycache__/
 env/
 .vscode/
-# next.js build output
 staticfiles/
 #static/

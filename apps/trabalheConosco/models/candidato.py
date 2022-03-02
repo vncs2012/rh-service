@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 class Candidato(models.Model):
     cpf = models.CharField("CPF:", max_length=14, unique=True)
@@ -11,7 +12,7 @@ class Candidato(models.Model):
         verbose_name_plural = "Banco de Curriculo"
 
     def __str__(self):
-        return self.cpf
+        return f'{self.nome} - {self.cpf}'
 
     def get_absolute_url(self):
-        return reverse("Candidato_detail", kwargs={"pk": self.pk})
+        return reverse("Candidato_detail", kwargs={"pk": self.id})
